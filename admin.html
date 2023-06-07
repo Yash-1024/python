@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Side</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1e90ff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .approved {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Side</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Purpose</th>
+            <th>Action</th>
+        </tr>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request.name }}</td>
+            <td>{{ request.address }}</td>
+            <td>{{ request.email }}</td>
+            <td>{{ request.phone_number }}</td>
+            <td>{{ request.purpose }}</td>
+            <td>
+                {% if request.approved %}
+                    <span class="approved">Approved</span>
+                {% else %}
+                    <a href="/approve/{{ request.id }}">Approve</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
