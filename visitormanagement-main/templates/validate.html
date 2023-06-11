@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visitor Check-In</title>
+</head>
+<body>
+    <h1>Visitor Check-In</h1>
+
+    <h2>Upload QR Code</h2>
+    <form action="/validate_qr_code" method="POST" enctype="multipart/form-data">
+        <input type="file" name="qr_code_file" accept=".png, .jpeg, .jpg">
+        <input type="submit" value="Validate QR Code">
+    </form>
+
+    <hr>
+
+    {% if visitor_details %}
+    <h2>Visitor Details</h2>
+    <p>Name: {{ visitor_details.name }}</p>
+    <p>Address: {{ visitor_details.address }}</p>
+    <p>Email: {{ visitor_details.email }}</p>
+    <p>Phone Number: {{ visitor_details.phone_number }}</p>
+    <p>Purpose: {{ visitor_details.purpose }}</p>
+    {% endif %}
+
+    <h2>Number of People in the Building: {{ count }}</h2>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+# def send_confirmation_email(request):
+#     # Generate QR code
+#     qr_code = generate_qr_code(request)
+
+#     # Prepare the email data
+#     email_data = {
+#         "from": "Mailgun Sandbox <postmaster@sandbox1b0c786dabf84e19ba1f127ef582b3ce.mailgun.org>",
+#         "to": request.email,
+#         "subject": "Visitor Confirmation",
+#         "text": "Thank you for your visit! Please show the attached QR code at the point of entry",
+#     }
+
+#     # Attach the QR code image
+#     with open(qr_code, 'rb') as file:
+#         email_data["attachment"] = [
+#             ("qr_code.png", file.read())
+#         ]
+
+#     # Send the email using Mailgun API
+#     response = requests.post(
+#         "https://api.mailgun.net/v3/sandbox1b0c786dabf84e19ba1f127ef582b3ce.mailgun.org/messages",
+#         auth=("api", "bca908d844eca56eca5f837977370ca1-6d1c649a-d25e1c15"),
+#         files=email_data.get("attachment"),
+#         data=email_data
+#     )
+
+#     if response.status_code != 200:
+#         print("Failed to send email.")
+#     else:
+#         print("Email sent successfully.")

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Side</title>
+    <style>
+        /* CSS styles here */
+
+        /* ... */
+
+    </style>
+</head>
+<body>
+    <h1>Admin Side</h1>
+
+    <h2>Upload QR Code</h2>
+    <form action="/validate_qr_code" method="POST" enctype="multipart/form-data">
+        <input type="file" name="qr_code_file" accept=".png, .jpeg, .jpg">
+        <input type="submit" value="Validate QR Code">
+    </form>
+
+    <hr>
+
+    <h2>Visitor Requests</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Purpose</th>
+            <th>Action</th>
+            <th>QR Code</th>
+        </tr>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request.name }}</td>
+            <td>{{ request.address }}</td>
+            <td>{{ request.email }}</td>
+            <td>{{ request.phone_number }}</td>
+            <td>{{ request.purpose }}</td>
+            <td>
+                {% if request.approved %}
+                    Approved
+                {% else %}
+                    <a href="/approve/{{ request.id }}">Approve</a>
+                {% endif %}
+            </td>
+            <td>
+                {% if request.approved %}
+                    <img src="{{ url_for('validate_qr_code', request_id=request.id) }}" alt="QR Code" height="100" width="100">
+                {% else %}
+                    Not approved yet
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
