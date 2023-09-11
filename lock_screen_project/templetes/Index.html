@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <title>Countdown Timer</title>
+    </head>
+    <body>
+        <pre id="demo">Let's Finish Before the Timer Runs Out</pre>
+        <div class="pomodoro">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row"><p>Session length<p></div>
+                <div class="row counter">
+                  <div class="col-md-4">
+                    <button class="btn btn-default" id="sessDec">-</button>        
+                  </div>
+                  <div class="col-md-2">
+                    <div id="Session"></div>
+                  </div>
+                  <div class="col-md-4">
+                    <button class="btn btn-default" id="sessInc">+</button>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="col-md-6">
+                <div class="row"><p>Break Length<p></div>
+                <div class="row counter">
+                  <div class="col-md-4">
+                    <button class="btn btn-default" id="breakDec">-</button>
+                  </div>
+                  <div class="col-md-2">
+                    <div id="Break"></div>
+                  </div>
+                  <div class="col-md-4">
+                    <button class="btn btn-default" id="breakInc">+</button>        
+                  </div>
+                </div>
+              </div>
+            </div>
+              
+            <div id="clock" class="row">
+              <div class="timer"><div class="middle"></div></div>
+            </div>
+            <div class="row" id="statRow">
+              <div id="stats"></div>
+            </div>
+            <div class="container">
+              <div class="row" id="btns">
+                <button class="btn btn-default btn-lg" id="start">Start</button>
+                <button class="btn btn-default btn-lg" id="stop">Stop</button>
+                <button class="btn btn-default btn-lg" id="clear">Clear</button>
+              </div>
+            </div>
+               
+          </div>
+        <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
